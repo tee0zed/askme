@@ -1,0 +1,41 @@
+<div class="section">
+  <div class="margin-both-large text-center">
+    <h2 class="text-medium"><%= @user.name %></h2>
+    <div>
+      <%=image_tag user_avatar(@user), alt: "[Photo]", class: "avatar" %>
+    </div>
+    <h2 class="text-medium">@<%= @user.username %></h2>
+  </div>
+</div>
+
+<div class="section">
+  <div class="box">
+    <div class="margin-both">
+      <div class="text-lead">
+        <%= @questions.count %>
+        <%= sklonyator(@questions.count) %>
+      </div>
+      <% @questions.each do |question| %>
+      <%= render partial: 'questions/question', object: question %>
+      <% end %>
+    </div>
+
+    <div class="margin-both">
+      <div>
+        <%= form_for @new_question do |f| %>
+          <%= f.hidden_field :user_id %>
+        <div>
+          <%= f.label "Ваш вопрос для @#{@user.username}", class: 'form-label' %>
+        </div>
+        <div class="margin-top">
+          <%= f.text_area :text, class: 'form-textarea' %>
+        </div>
+        <div class="margin-top">
+          <%= submit_tag 'Задать вопрос', class: 'button green' %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+

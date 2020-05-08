@@ -1,0 +1,24 @@
+.button {
+  text-decoration: none;
+  size: 10px 20px;
+  padding: 10px;
+  margin: 0;
+  border-color: #6c6c6cab;
+  border-style: outset;
+  border-radius: 10px;
+  background: #6c6c6cab;
+  color: #fff;
+  text-shadow: 2px 1px 1px rgba(0, 0, 0, 0.76);
+  display: inline-block;
+  outline: none;
+  white-space: nowrap;
+}
+
+.button:active {
+  border-style: inset;
+}
+
+.green {
+  border-color: #aceaa9;
+  background: #96fb93;
+}

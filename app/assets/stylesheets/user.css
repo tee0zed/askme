@@ -1,0 +1,20 @@
+
+.avatar {
+  border-radius: 50%;
+  border: 3px solid #295168;
+  overflow: auto;
+  height: 120px;
+  background-size: cover;
+}
+
+.avatar-small {
+  border-radius: 50%;
+  border: 3px solid #295168;
+  overflow: auto;
+  height: 70px;
+  background-size: cover;
+}
+
+.user-item {
+  margin: 10px;
+}

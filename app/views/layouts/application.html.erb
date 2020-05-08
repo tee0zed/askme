@@ -1,15 +1,25 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Askme</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <meta charset="UTF-8"/>
+  <title>Askme</title>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<div class="header">
+  <div class="box">
+    <div class="header-logo">
+      <h1 class="text-medium text-center"><%=link_to "Askme", root_path %></h1>
+    </div>
+  </div>
+</div>
 
-  <body>
+
+<div class="container">
     <%= yield %>
-  </body>
+</div>
+
+</body>
 </html>
