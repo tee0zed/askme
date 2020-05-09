@@ -1,15 +1,25 @@
   .question {
     margin: 20px 0 0 0;
-    background-color: #DADADA;
-    border: 3px solid #666666;
-    padding: 10px;
-    max-width: auto;
-    min-width: 300px;
-    float: right;
+    border: 3px groove #96ac8a91;
+    min-width: 200px;
+    max-width: 700px;
+    max-height: 250px;
+    overflow-y: auto;
   }
 
   .question-content {
-    background-color: #F7F7F7;
-    text-align: center;
+    background-color: #E9FBF4;
+    text-align: left;
     font-family: "DejaVu Sans Mono";
+    max-width: 400px;
+    padding: 5px;
+    border: 6px #96ac8a47 groove;
+  }
+
+  .question-text {
+    padding: 10px 0;
+  }
+
+  .new_question {
+    flood-color: white;
   }

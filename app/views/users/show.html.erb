@@ -1,4 +1,4 @@
-<div class="section">
+<div class="flex-section">
   <div class="margin-both-large text-center">
     <h2 class="text-medium"><%= @user.name %></h2>
     <div>
@@ -6,18 +6,18 @@
     </div>
     <h2 class="text-medium">@<%= @user.username %></h2>
   </div>
-</div>
 
-<div class="section">
-  <div class="box">
+  <div class="flex-box">
     <div class="margin-both">
       <div class="text-lead">
         <%= @questions.count %>
         <%= sklonyator(@questions.count) %>
       </div>
-      <% @questions.each do |question| %>
-      <%= render partial: 'questions/question', object: question %>
-      <% end %>
+        <div class="question">
+          <% @questions.each do |question| %>
+          <%= render partial: 'questions/question', object: question %>
+          <% end %>
+        </div>
     </div>
 
     <div class="margin-both">

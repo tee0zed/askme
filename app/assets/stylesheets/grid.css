@@ -23,18 +23,29 @@
   margin-bottom: 36px;
 }
 
-.box {
+.flex-box {
   display: flex;
   margin: auto;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .container {
   margin: 7% auto 0 auto;
   background: rgba(0, 89, 104, 0.24);
+  padding: 1px;
 }
 
-.section {
+.flex-section {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  padding-bottom: 2%;
+}
+
+.flex-section-row {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  padding-bottom: 2%;
 }

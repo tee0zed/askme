@@ -4,7 +4,7 @@
     <h1 class="title-medium">Наши пользователи</h1>
   </div>
 
-<div class="section">
+<div class="flex-section-row">
   <% @users.each do |user| %>
     <div class="user-item">
       <%= link_to image_tag(user_avatar(user), class: 'avatar-small'), user_path(user) %>
