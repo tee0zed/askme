@@ -23,3 +23,12 @@
   .new_question {
     flood-color: white;
   }
+
+  .question-box {
+    min-width: 200px;
+    padding: 10px;
+    border-style: solid;
+    border-radius: 5px;
+    background-color: #ffffff40;
+    border-color: rgba(0, 89, 104, 0.24);
+  }

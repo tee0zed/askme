@@ -1,8 +1,36 @@
-.form-input-text {
-  width: 230px;
-  padding: 2% 4%;
-  border-style: solid;
-  border-radius: 5px;
-  background-color: white;
-  border-color: #dddf;
+.form-field {
+  margin-bottom: 10px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-textarea {
+  min-height: 100px;
+}
+
+.form-textarea,
+.form-text-field {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  border: 1px solid rgba(25, 139, 139, 0.74);
+  padding: 7.5px 10px;
+  border-radius: 3px;
+  font-size: 16px;
+}
+
+.form-action {
+  margin-top: 20px;
+}
+
+.form-errors {
+  color: #dc554f;
+}
+
+.form-error-message {
+  list-style: none;
+  margin-bottom: 10px;
 }

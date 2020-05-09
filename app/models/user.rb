@@ -16,7 +16,7 @@ class User < ApplicationRecord
   validates :username,  length: { maximum: 40 }
   validates :username, format: { with: /\A[a-z0-9_]+\z/i }
 
-  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP, message: "неправильного формата"}
 
   attr_accessor :password
 

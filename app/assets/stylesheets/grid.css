@@ -49,3 +49,11 @@
   flex-direction: row;
   padding-bottom: 2%;
 }
+
+.flash-alert {
+  text-align: center;
+  font-family: Dialog, sans-serif;
+  color: d04343;
+  font-size: 30px;
+  font-weight: bold;
+}
