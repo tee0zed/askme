@@ -13,6 +13,12 @@
     <div class="header-logo">
       <h1 class="text-medium text-center"><%=link_to "Askme", root_path %></h1>
     </div>
+    <div class="header-nav">
+      <%= link_to 'Зарегистрироваться', sign_up_path,
+                  class: 'button small' %>
+      <%= link_to 'Войти', log_in_path,
+                  class: 'button small' %>
+    </div>
   </div>
 </div>
 
