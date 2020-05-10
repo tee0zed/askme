@@ -14,10 +14,18 @@
       <h1 class="text-medium text-center"><%=link_to "Askme", root_path %></h1>
     </div>
     <div class="header-nav">
-      <%= link_to 'Зарегистрироваться', sign_up_path,
-                  class: 'button small' %>
-      <%= link_to 'Войти', log_in_path,
-                  class: 'button small' %>
+      <div class="header-nav">
+        <% if current_user %>
+          <%= link_to "@#{current_user.username}", user_path(current_user) %> |
+          <%= link_to 'Выйти', log_out_path,
+                      class: 'button-small' %>
+        <% else %>
+          <%= link_to 'Зарегистрироваться', sign_up_path,
+                      class: 'button-small' %>
+          <%= link_to 'Войти', log_in_path,
+                      class: 'button-small' %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

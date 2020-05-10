@@ -2,6 +2,9 @@
   <div class="margin-both-large text-center">
     <h2 class="text-medium"><%= @user.name %></h2>
     <div>
+    <div class="margin-bottom">
+      <%= link_to 'Редактировать профиль', edit_user_path(@user) if current_user == @user %>
+    </div>
       <%=image_tag user_avatar(@user), alt: "[Photo]", class: "avatar" %>
     </div>
     <h2 class="text-medium">@<%= @user.username %></h2>

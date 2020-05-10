@@ -44,20 +44,21 @@ class User < ApplicationRecord
   def self.hash_to_string(password_hash)
     password_hash.unpack('H*')[0]
   end
-end
 
-def self.authenticate(email, password)
-  user = find_by(email: email)
 
-  return nil unless user.present?
+  def self.authenticate(email, password)
+    user = find_by(email: email)
 
-  hashed_password = User.hash_to_string(
-    OpenSSL::PKCS5.pbkdf2_hmac(
-      password, user.password_salt, ITERATIONS, DIGEST.length, DIGEST
+    return nil unless user.present?
+
+    hashed_password = User.hash_to_string(
+      OpenSSL::PKCS5.pbkdf2_hmac(
+        password, user.password_salt, ITERATIONS, DIGEST.length, DIGEST
+      )
     )
-  )
 
-  return user if user.password_hash == hashed_password
+    return user if user.password_hash == hashed_password
 
-  nil
+    nil
+  end
 end
