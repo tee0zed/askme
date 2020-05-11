@@ -4,6 +4,7 @@
   <meta charset="UTF-8"/>
   <title>Askme</title>
   <%= stylesheet_link_tag 'application', media: 'all' %>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -16,14 +17,14 @@
     <div class="header-nav">
       <div class="header-nav">
         <% if current_user %>
-          <%= link_to "@#{current_user.username}", user_path(current_user) %> |
+          <%= link_to "@#{current_user.username}", user_path(current_user) %> &nbsp
           <%= link_to 'Выйти', log_out_path,
-                      class: 'button-small' %>
+                      class: 'button small' %>
         <% else %>
           <%= link_to 'Зарегистрироваться', sign_up_path,
-                      class: 'button-small' %>
+                      class: 'button small' %>
           <%= link_to 'Войти', log_in_path,
-                      class: 'button-small' %>
+                      class: 'button small' %>
         <% end %>
       </div>
     </div>
