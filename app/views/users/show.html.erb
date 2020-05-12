@@ -19,12 +19,11 @@
         </div>
         <% if @questions.present? %>
         <div class="text-lead">
-          <% with_answers = @questions.select { |q| q.answer.present? }.count %>
-          <%= with_answers %>
-          <%= sklonyator(with_answers) %> с ответом
+          <%= questions_with_answers %>
+          <%= sklonyator(questions_with_answers) %> с ответом
         </div>
         <div class="text-lead">
-          <% without_answers =  @questions.count - with_answers %>
+          <% without_answers =  @questions.count - questions_with_answers %>
           <%= without_answers %>
           <%= sklonyator(without_answers) %> без ответа
         </div>

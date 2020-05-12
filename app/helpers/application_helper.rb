@@ -24,4 +24,8 @@ module ApplicationHelper
       'вопросов'
     end
   end
+
+  def questions_with_answers
+    @questions.select { |q| q.answer.present? }.count
+  end
 end
