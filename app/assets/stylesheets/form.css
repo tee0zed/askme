@@ -16,10 +16,21 @@
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
-  border: 1px solid rgba(25, 139, 139, 0.74);
+  border: 1px solid rgba(41, 43, 43, 0.74);
   padding: 7.5px 10px;
   border-radius: 3px;
+  background: #F7F7F7;
   font-size: 16px;
+}
+
+select {
+  width: 100%;
+  max-width: 100%;
+  background: #F7F7F7;
+  font-size: 16px;
+  padding: 7.5px 10px;
+  border: 1px solid rgba(41, 43, 43, 0.74);
+  border-radius: 3px;
 }
 
 .form-action {

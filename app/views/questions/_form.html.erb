@@ -1,7 +1,7 @@
 <%# Форма для создания/правки вопроса %>
 <div class="form">
   <%# Форма для объекта @question %>
-  <%= form_for(@question) do |f| %>
+  <%= form_with(@question, method: 'post') do |f| %>
     <% if @question.errors.any? %>
       <div class="form-errors">
         <ul>
@@ -28,7 +28,7 @@
       </div>
     <% end %>
 
-    <div class="form-action buffer-both">
+    <div class="form-action margin-both">
       <%= f.submit 'Сохранить', tag: ' a', class: 'button small' %>
       или
       <%= link_to "вернуться", user_path(@question.user) %>

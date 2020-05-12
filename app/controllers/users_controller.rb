@@ -20,6 +20,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
+      session[:user_id] = @user.id
+
       redirect_to root_url, notice: "Пользователь создан!"
     else
       render "new"
@@ -27,7 +29,6 @@ class UsersController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
@@ -46,6 +47,18 @@ class UsersController < ApplicationController
     @new_question = @user.questions.build
   end
 
+  def destroy
+    if User.authenticate(@user.email, params[:password])
+      User.destroy(@user)
+
+      session[:user_id] = nil
+
+      redirect_to root_path, notice: "Пользователь успешно удален."
+    else
+      redirect_to edit_user_path, notice: "Неверный пароль."
+    end
+  end
+
   private
 
   def load_user
@@ -57,6 +70,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :name, :username, :avatar_url)
+    params.require(:user).permit(:email, :password, :password_confirmation, :name, :username, :avatar_url, :profilecolor)
   end
 end

@@ -3,8 +3,6 @@
   <h1 class="title-medium margin-both text-center">Править профиль</h1>
   <div class="flex-box">
     <%= form_for(@user) do |f| %>
-      <%# Вывод ошибок валидации пользователя, если есть. Ошибки содержатся %>
-      <%# в поле errors модели (в нашем случае @users). %>
       <% if @user.errors.any? %>
         <div class="form-errors">
           <ul>
@@ -15,14 +13,11 @@
         </div>
       <% end %>
     <div class="question-box">
-      <%# С помощью методов label и text_field у объекта f мы создаем теги %>
-      <%# <label ... > и <input type="text" ... > с нужными атрибуами %>
       <div class="form-field">
         <%= f.label :username, class: 'form-label' %>
         <%= f.text_field :username, class: 'form-text-field' %>
       </div>
 
-      <%# Поступаем аналогично для других полей %>
       <div class="form-field">
         <%= f.label 'Ваше имя', class: 'form-label' %>
         <%= f.text_field :name, class: 'form-text-field' %>
@@ -33,24 +28,40 @@
         <%= f.text_field :avatar_url, class: 'form-text-field' %>
       </div>
 
-      <div class="margin-both">
-        Если не хотите менять пароль — оставьте эти поля пустыми!
-      </div>
-
       <div class="form-field">
-        <%= f.label :password, class: 'form-label' %>
-        <%= f.password_field :password, class: 'form-text-field' %>
+        <%= f.label 'Цвет страницы вашего профиля', class: 'form-label' %>
+          <%= f.select :profilecolor, coral: 1, aqua: 2, "purple(default)": 3, green: 4, violet: 5 %>
       </div>
+      <div class="question-box">
+        <div class="margin-both">
+          Если не хотите менять пароль — оставьте эти поля пустыми!
+        </div>
 
-      <div class="form-field">
-        <%= f.label :password_confirmation, class: 'form-label' %>
-        <%= f.password_field :password_confirmation, class: 'form-text-field' %>
-      </div>
+        <div class="form-field">
+          <%= f.label :password, class: 'form-label' %>
+          <%= f.password_field :password, class: 'form-text-field' %>
+        </div>
 
-      <div class="form-action margin-top text-center">
-        <%= f.submit 'Сохранить', class: 'button' %>
+        <div class="form-field">
+          <%= f.label :password_confirmation, class: 'form-label' %>
+          <%= f.password_field :password_confirmation, class: 'form-text-field' %>
+        </div>
+
+        <div class="form-action margin-top text-center">
+          <%= f.submit 'Сохранить', class: 'button' %>
+        </div>
       </div>
     <% end %>
+    <div class="margin-top-large question-box">
+      <div class=" form-label">
+        Чтобы удалить профиль введите пароль в поле ниже.
+      </div>
+      <%= form_tag user_path(@user), method: :delete do %>
+        <%= password_field_tag :password, nil, class: 'form-text-field' %>
+        <div class="margin-top text-center">
+          <%= submit_tag 'Удалить', class: 'button small'%>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

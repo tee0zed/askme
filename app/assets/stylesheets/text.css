@@ -1,7 +1,7 @@
 body {
   font-family: "Montana", sans-serif;
   color: #444;
-  background-color: rgba(0, 89, 104, 0.24);
+  background-color: rgba(0, 0, 0, 0.17);
 }
 
 .title-large {
@@ -18,6 +18,11 @@ body {
   font-weight: bold;
   margin-bottom: 5px;
   font-size: 30px;
+  text-shadow:
+    #F7F7F7 1px 1px 0px,
+    #F7F7F7 -1px -1px 0px,
+    #F7F7F7 1px -1px 0px,
+    #F7F7F7 -1px 1px 0px;
 }
 
 .title-small {

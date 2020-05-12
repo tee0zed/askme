@@ -2,9 +2,6 @@
   <div class="margin-both-large text-center">
     <h2 class="text-medium"><%= @user.name %></h2>
     <div>
-    <div class="margin-bottom">
-      <%= link_to 'Редактировать профиль', edit_user_path(@user) if current_user == @user %>
-    </div>
       <%=image_tag user_avatar(@user), alt: "[Photo]", class: "avatar" %>
     </div>
     <h2 class="text-medium">@<%= @user.username %></h2>
@@ -27,12 +24,12 @@
           <%= without_answers %>
           <%= sklonyator(without_answers) %> без ответа
         </div>
-        <% end %>
         <div class="question">
           <% @questions.each do |question| %>
           <%= render partial: 'questions/question', object: question %>
           <% end %>
         </div>
+      <% end %>
       </div>
     </div>
 
@@ -53,5 +50,8 @@
       </div>
     </div>
   </div>
+  <% if current_user == @user %>
+    <%= link_to 'Редактировать профиль', edit_user_path(@user), class: 'button small' %>
+  <% end %>
 </div>
 

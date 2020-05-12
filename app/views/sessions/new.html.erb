@@ -1,25 +1,25 @@
 <div class="flex-section">
   <div class="margin-both-large text-center">
     <h1 class="title-medium">Вход</h1>
-    <div class="flex-section-row">
-      <div class="question-box">
-        <div class="form">
-          <%= form_tag sessions_path do %>
-            <div class="form-field">
-              <%= label_tag :email, 'Логин (email)', class: 'form-label' %>
-              <%= text_field_tag :email, params[:email], class: 'form-text-field' %>
-            </div>
+  </div>
+  <div class="flex-section-row">
+    <div class="question-box">
+      <div class="form">
+        <%= form_tag sessions_path do %>
+          <div class="form-field">
+            <%= label_tag :email, 'Логин (email)', class: 'form-label' %>
+            <%= text_field_tag :email, params[:email], class: 'form-text-field' %>
+          </div>
 
-            <div class="form-field">
-              <%= label_tag :password, 'Пароль', class: 'form-label' %>
-              <%= password_field_tag :password, '', class: 'form-text-field' %>
-            </div>
+          <div class="form-field">
+            <%= label_tag :password, 'Пароль', class: 'form-label' %>
+            <%= password_field_tag :password, '', class: 'form-text-field' %>
+          </div>
 
-            <div class="form-action">
-              <%= submit_tag "Войти", class: 'button button-dark button-small' %>
-            </div>
-          <% end %>
-        </div>
+          <div class="form-action text-center">
+            <%= submit_tag "Войти", class: 'button' %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>

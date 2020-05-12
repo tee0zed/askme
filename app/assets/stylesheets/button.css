@@ -1,8 +1,7 @@
 .button {
   text-decoration: none;
-  size: 10px 20px;
+  margin: auto;
   padding: 10px;
-  margin: 0;
   border-color: #6c6c6cab;
   border-style: outset;
   border-radius: 10px;

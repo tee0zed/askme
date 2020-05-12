@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
     @user = User.authenticate(params[:email], params[:password])
     if @user.present?
       session[:user_id] = @user.id
-      redirect_to root_url, notice: 'вы успешно залогинились'
+      redirect_to root_url, notice: 'Вы успешно залогинились'
     else
       flash.now.alert = 'Неправильные данные'
       render :new

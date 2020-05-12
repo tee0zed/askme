@@ -28,4 +28,9 @@ module ApplicationHelper
   def questions_with_answers
     @questions.select { |q| q.answer.present? }.count
   end
+
+  def container_color
+    return current_user.profilecolor if current_user
+    3
+  end
 end

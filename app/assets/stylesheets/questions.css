@@ -1,19 +1,19 @@
   .question {
     margin: 20px 0 0 0;
-    border: 3px groove #96ac8a91;
-    min-width: 200px;
+    border: 3px groove rgba(0, 0, 0, 0.4);
+    min-width: 250px;
     max-width: 700px;
     max-height: 250px;
     overflow-y: auto;
   }
 
   .question-content {
-    background-color: #E9FBF4;
+    background-color: rgba(255, 255, 255, 0.76);
     text-align: left;
     font-family: "DejaVu Sans Mono";
     max-width: 400px;
     padding: 5px;
-    border: 6px #96ac8a47 groove;
+    border: 6px rgba(0, 0, 0, 0.28) groove;
   }
 
   .question-text {
@@ -29,8 +29,8 @@
     padding: 10px;
     border-style: solid;
     border-radius: 5px;
-    background-color: #ffffff40;
-    border-color: rgba(0, 89, 104, 0.24);
+    background-color: #ffffffab;
+    border-color: rgba(49, 49, 49, 0.35);
   }
 
   .question-opt {

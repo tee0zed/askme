@@ -20,7 +20,7 @@ class User < ApplicationRecord
 
   attr_accessor :password
 
-  validates :password, presence: true, on: :create, confirmation: true
+  validates :password, presence: true, on: [:create, :destroy], confirmation: true
 
   private
 
@@ -45,6 +45,9 @@ class User < ApplicationRecord
     password_hash.unpack('H*')[0]
   end
 
+  def self.destroy(user)
+    user.destroy
+  end
 
   def self.authenticate(email, password)
     user = find_by(email: email)
