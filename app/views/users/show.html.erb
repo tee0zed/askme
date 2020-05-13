@@ -11,17 +11,17 @@
     <div class="margin-both">
       <div class="question-box">
         <div class="text-lead">
-          <%= @questions.count %>
-          <%= sklonyator(@questions.count) %>
+          <%= @questions_count %>
+          <%= sklonyator(@questions_count) %>
         </div>
         <% if @questions.present? %>
         <div class="text-lead">
-          <%= questions_with_answers %>
-          <%= sklonyator(questions_with_answers) %> с ответом
+          <%= @answers_count %>
+          <%= sklonyator(@answers_count) %> с ответом
         </div>
         <div class="text-lead">
-          <%= questions_without_answers %>
-          <%= sklonyator(questions_without_answers) %> без ответа
+          <%= @unanswered_count %>
+          <%= sklonyator(@unanswered_count) %> без ответа
         </div>
         <div class="question">
           <% @questions.each do |question| %>
@@ -34,7 +34,7 @@
 
     <div class="margin-both">
       <div class="question-box">
-        <%= form_for @new_question do |f| %>
+        <%= form_for(@new_question) do |f| %>
           <%= f.hidden_field :user_id %>
 
           <div class="form-field">

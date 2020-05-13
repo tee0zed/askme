@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_13_134343) do
+ActiveRecord::Schema.define(version: 2020_05_13_175551) do
 
   create_table "questions", force: :cascade do |t|
     t.string "answer"
@@ -32,8 +32,9 @@ ActiveRecord::Schema.define(version: 2020_05_13_134343) do
     t.string "avatar_url"
     t.string "password_hash"
     t.string "password_salt"
-    t.integer "profilecolor", default: 1
+    t.integer "profilecolor", default: 4
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "questions", "users"
 end

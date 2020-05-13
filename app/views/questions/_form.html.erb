@@ -1,7 +1,7 @@
 <%# Форма для создания/правки вопроса %>
 <div class="form">
   <%# Форма для объекта @question %>
-  <%= form_with(@question, method: 'post') do |f| %>
+  <%= form_for(@question) do |f| %>
     <% if @question.errors.any? %>
       <div class="form-errors">
         <ul>
