@@ -20,9 +20,8 @@
           <%= sklonyator(questions_with_answers) %> с ответом
         </div>
         <div class="text-lead">
-          <% without_answers =  @questions.count - questions_with_answers %>
-          <%= without_answers %>
-          <%= sklonyator(without_answers) %> без ответа
+          <%= questions_without_answers %>
+          <%= sklonyator(questions_without_answers) %> без ответа
         </div>
         <div class="question">
           <% @questions.each do |question| %>
