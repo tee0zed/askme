@@ -1,2 +1,2 @@
-# README
-UNDER CONSTRUCTION
+## Heroku
+https://askify.herokuapp.com
