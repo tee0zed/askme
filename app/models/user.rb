@@ -18,6 +18,8 @@ class User < ApplicationRecord
 
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP, message: "неправильного формата"}
 
+  validates :avatar_url, format: { with: URI::regexp(%w(http https)), message: "неправильного формата" }, allow_blank: true
+
   attr_accessor :password
 
   validates :password, presence: true, on: [:create, :destroy], confirmation: true
@@ -64,4 +66,5 @@ class User < ApplicationRecord
 
     nil
   end
+
 end
