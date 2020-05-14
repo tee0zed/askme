@@ -54,6 +54,10 @@ class UsersController < ApplicationController
   def destroy
     if User.authenticate(@user.email, params[:password])
 
+      @user.questions.destroy_all
+
+      Question.where(author_id: @user.id).update(author_id: nil)
+
       @user.destroy
 
       session[:user_id] = nil
