@@ -53,7 +53,8 @@ class UsersController < ApplicationController
 
   def destroy
     if User.authenticate(@user.email, params[:password])
-      User.destroy(@user)
+
+      @user.destroy
 
       session[:user_id] = nil
 
