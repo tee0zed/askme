@@ -8,13 +8,18 @@ class User < ApplicationRecord
   has_many :questions
 
   before_validation :username_downcase
+
   before_save :encrypt_password
+
+  before_validation :hex_format, on: :update
 
   validates :email, :username, presence: true
   validates :email, uniqueness: true
 
   validates :username,  length: { maximum: 40 }
   validates :username, format: { with: /\A[a-z0-9_]+\z/i }
+
+  validates :profilecolor, format: { with: /\A(?:[0-9a-fA-F]{3}){1,2}\z/, message: ": неверный формат цвета" }, on: :update
 
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP, message: "неправильного формата"}
 
@@ -25,6 +30,10 @@ class User < ApplicationRecord
   validates :password, presence: true, on: [:create, :destroy], confirmation: true
 
   private
+
+  def hex_format
+    self.profilecolor = profilecolor.gsub('#', '')
+  end
 
   def username_downcase
     self.username = username.downcase

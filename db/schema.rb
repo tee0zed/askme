@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2020_05_13_175551) do
     t.string "avatar_url"
     t.string "password_hash"
     t.string "password_salt"
-    t.integer "profilecolor", default: 3
+    t.string "profilecolor", default: "4f8bc0"
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 

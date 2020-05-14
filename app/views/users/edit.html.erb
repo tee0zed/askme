@@ -1,5 +1,5 @@
 <%# Страница редактирования пользователя %>
-<div class="flex-section">
+<div style="background-color: #<%= @user.profilecolor %>" class="flex-section">
   <h1 class="title-medium margin-both text-center">Править профиль</h1>
   <div class="flex-box">
     <%= form_for(@user) do |f| %>
@@ -29,9 +29,13 @@
       </div>
 
       <div class="form-field">
-        <%= f.label 'Цвет страницы вашего профиля', class: 'form-label' %>
-          <%= f.select :profilecolor, coral: 1, aqua: 2, "purple(default)": 3, green: 4, violet: 5 %>
+        <%= f.label 'Цвет страницы вашего профиля в формате hex', class: 'form-label' %>
+        <div style="text-decoration: underline" class="text-small">
+          <%= link_to "помощь в выборе цвета", 'https://www.webfx.com/web-design/color-picker/' %>
+        </div>
+          <%= f.text_field :profilecolor, class: 'form-text-field' %>
       </div>
+
       <div class="question-box">
         <div class="margin-both">
           Если не хотите менять пароль — оставьте эти поля пустыми!

@@ -41,6 +41,12 @@ body {
   font-size: 18px;
   line-height: 39px;
   color: #403e3e;
+  text-shadow:
+    #F7F7F7 1px 1px 0px,
+    #F7F7F7 -1px -1px 0px,
+    #F7F7F7 1px -1px 0px,
+    #F7F7F7 -1px 1px 0px;
+
 }
 
 .text-small {
