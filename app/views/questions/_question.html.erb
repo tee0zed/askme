@@ -17,7 +17,7 @@
     <%= l(question.created_at, format: :short) %>
     <div class="question-text text-lead">
       автор:
-      <%= link_to(question_author(question), link_to_question_author(question)) %>
+      <%= link_to question_author(question), link_to_question_author(question) %>
     </div>
   </div>
 

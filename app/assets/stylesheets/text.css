@@ -68,3 +68,12 @@ body {
   text-align: right;
 }
 
+.author-link {
+  color: #4f8bc0;
+  text-decoration: underline;
+}
+
+.author-link:hover {
+  color: #db0031;
+  text-decoration: underline;
+}
