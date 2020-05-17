@@ -18,6 +18,7 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
 
+  validates :username, uniqueness: true
   validates :username,  length: { maximum: 40 }
   validates :username, format: { with: USERNAME_REGEXP }
 
