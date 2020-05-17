@@ -5,7 +5,6 @@ class User < ApplicationRecord
   ITERATIONS = 20000
   DIGEST = OpenSSL::Digest::SHA256.new
   USERNAME_REGEXP = /\A[a-z0-9_]+\z/i
-  PROFILECOLOR_REGEXP = /\A(?:[0-9a-fA-F]{3}){1,2}\z/
 
   has_many :questions, dependent: :destroy
 
@@ -21,8 +20,6 @@ class User < ApplicationRecord
 
   validates :username,  length: { maximum: 40 }
   validates :username, format: { with: USERNAME_REGEXP }
-
-  validates :profilecolor, format: { with: PROFILECOLOR_REGEXP }
 
   validates :avatar_url, format: { with: URI::regexp(%w(http https)) }, allow_blank: true
 
