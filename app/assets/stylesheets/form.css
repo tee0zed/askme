@@ -11,6 +11,13 @@
   min-height: 100px;
 }
 
+.color-field{
+  width: 90px;
+  height: 40px;
+  padding: 5px;
+  margin: 5px;
+}
+
 .form-textarea,
 .form-text-field {
   width: 100%;

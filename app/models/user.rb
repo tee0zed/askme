@@ -4,29 +4,29 @@ class User < ApplicationRecord
 
   ITERATIONS = 20000
   DIGEST = OpenSSL::Digest::SHA256.new
+  USERNAME_REGEXP = /\A[a-z0-9_]+\z/i
+  PROFILECOLOR_REGEXP = /\A(?:[0-9a-fA-F]{3}){1,2}\z/
 
-  has_many :questions
+  has_many :questions, dependent: :destroy
 
   before_validation :username_downcase
 
   before_save :encrypt_password
 
-  before_validation :hex_format, on: :update
+  before_validation :hex_format
 
   validates :email, :username, presence: true
   validates :email, uniqueness: true
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
 
   validates :username,  length: { maximum: 40 }
-  validates :username, format: { with: /\A[a-z0-9_]+\z/i }
+  validates :username, format: { with: USERNAME_REGEXP }
 
-  validates :profilecolor, format: { with: /\A(?:[0-9a-fA-F]{3}){1,2}\z/, message: ": неверный формат цвета" }, on: :update
+  validates :profilecolor, format: { with: PROFILECOLOR_REGEXP }
 
-  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP, message: "неправильного формата"}
-
-  validates :avatar_url, format: { with: URI::regexp(%w(http https)), message: "неправильного формата" }, allow_blank: true
+  validates :avatar_url, format: { with: URI::regexp(%w(http https)) }, allow_blank: true
 
   attr_accessor :password
-
   validates :password, presence: true, on: [:create, :destroy], confirmation: true
 
   private
@@ -75,5 +75,4 @@ class User < ApplicationRecord
 
     nil
   end
-
 end
