@@ -1,10 +1,6 @@
 module QuestionsHelper
-  def question_author(question)
-    question.author&.username || "Аноним"
-  end
-
   def link_to_question_author(question)
-    return user_path(question.author) if question.author.present?
-    nil
+    return link_to(question.author&.username, user_path(question.author), class: "author-link") if question.author.present?
+    "Аноним"
   end
 end
