@@ -9,20 +9,20 @@ class UsersController < ApplicationController
   end
 
   def new
-    redirect_to root_url, alert: "Вы уже залогинены" if current_user.present?
+    redirect_to root_path, alert: "Вы уже залогинены" if current_user.present?
 
     @user = User.new
   end
 
   def create
-    redirect_to root_url, alert: "Вы уже залогинены" if current_user.present?
+    redirect_to root_path, alert: "Вы уже залогинены" if current_user.present?
 
     @user = User.new(user_params)
 
     if @user.save
       session[:user_id] = @user.id
 
-      redirect_to root_url, notice: "Пользователь создан!"
+      redirect_to root_path, notice: "Пользователь создан!"
     else
       render "new"
     end
@@ -40,8 +40,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user  =  User.find params[:id]
-
     @questions = @user.questions.order(created_at: :desc)
 
     @new_question = @user.questions.build

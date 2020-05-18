@@ -5,14 +5,17 @@ class User < ApplicationRecord
   ITERATIONS = 20000
   DIGEST = OpenSSL::Digest::SHA256.new
   USERNAME_REGEXP = /\A[a-z0-9_]+\z/i
+  PROFILECOLOR_REGEXP = /\A(?:[0-9a-fA-F]{3}){1,2}\z/
 
+  attr_accessor :password
+  
   has_many :questions, dependent: :destroy
 
-  before_validation :username_downcase
+  before_validation :username_downcase, if: :username
 
-  before_save :encrypt_password
+  before_save :encrypt_password, if: :password
 
-  before_validation :hex_format
+  before_validation :hex_format, if: :profilecolor
 
   validates :email, :username, presence: true
   validates :email, uniqueness: true
@@ -23,8 +26,9 @@ class User < ApplicationRecord
   validates :username, format: { with: USERNAME_REGEXP }
 
   validates :avatar_url, format: { with: URI::regexp(%w(http https)) }, allow_blank: true
-
-  attr_accessor :password
+  
+  validates :profilecolor, format: { with: PROFILECOLOR_REGEXP }
+  
   validates :password, presence: true, on: [:create, :destroy], confirmation: true
 
   private
@@ -34,7 +38,7 @@ class User < ApplicationRecord
   end
 
   def username_downcase
-    self.username = username.downcase
+    self.username = username.downcase 
   end
 
   def encrypt_password

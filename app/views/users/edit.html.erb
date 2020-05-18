@@ -30,7 +30,7 @@
 
       <div class="form-field">
         <%= f.label 'Цвет вашего профиля', class: 'form-label' %>
-        <%= f.color_field :profilecolor, class: 'color-field' %>
+        <%= f.color_field :profilecolor, value: "##{@user.profilecolor}", class: 'color-field' %>
       </div>
 
       <div class="question-box">
