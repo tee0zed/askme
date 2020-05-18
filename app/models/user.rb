@@ -12,23 +12,13 @@ class User < ApplicationRecord
   has_many :questions, dependent: :destroy
 
   before_validation :username_downcase, if: :username
-
+  before_validation :hex_format, if: :profilecolor
   before_save :encrypt_password, if: :password
 
-  before_validation :hex_format, if: :profilecolor
-
-  validates :email, :username, presence: true
-  validates :email, uniqueness: true
-  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
-
-  validates :username, uniqueness: true
-  validates :username,  length: { maximum: 40 }
-  validates :username, format: { with: USERNAME_REGEXP }
-
+  validates :email, presence: true, uniqueness: true,  format: { with: URI::MailTo::EMAIL_REGEXP }
+  validates :username, uniqueness: true, length: { maximum: 40 }, format: { with: USERNAME_REGEXP }
   validates :avatar_url, format: { with: URI::regexp(%w(http https)) }, allow_blank: true
-  
   validates :profilecolor, format: { with: PROFILECOLOR_REGEXP }
-  
   validates :password, presence: true, on: [:create, :destroy], confirmation: true
 
   private
