@@ -1,18 +1,14 @@
-
 <% question ||= nil %>
 <% action_icon = question.answer.blank? ? 'reply' : 'pencil' %>
-
 <div class="question-content">
   <div class="question-text text-lead">
     <%= question.text %>
   </div>
-
   <% if question.answer.present? %>
     <div class="question-answer text-lead">
       <%= question.answer %>
     </div>
   <% end %>
-
   <div class="question-date">
     <%= l(question.created_at, format: :short) %>
     <div class="question-text text-lead">
@@ -20,7 +16,6 @@
       <%= link_to_question_author(question) %>
     </div>
   </div>
-
   <% if question.user == current_user %>
     <div class="question-opt">
       <%= link_to fa_icon(action_icon), edit_question_path(question) %>

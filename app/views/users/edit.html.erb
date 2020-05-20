@@ -1,5 +1,5 @@
 <%# Страница редактирования пользователя %>
-<div style="background-color: #<%= @user.profilecolor %>" class="flex-section">
+<div style="background-color: <%= @user.profilecolor %>" class="flex-section">
   <h1 class="title-medium margin-both text-center">Править профиль</h1>
   <div class="flex-box">
     <%= form_for @user do |f| %>
@@ -17,43 +17,35 @@
         <%= f.label "Username", class: 'form-label' %>
         <%= f.text_field :username, class: 'form-text-field' %>
       </div>
-
       <div class="form-field">
         <%= f.label 'Ваше имя', class: 'form-label' %>
         <%= f.text_field :name, class: 'form-text-field' %>
       </div>
-
       <div class="form-field">
         <%= f.label 'URL вашей аватарки', class: 'form-label' %>
         <%= f.text_field :avatar_url, class: 'form-text-field' %>
       </div>
-
       <div class="form-field">
         <%= f.label 'Цвет вашего профиля', class: 'form-label' %>
-        <%= f.color_field :profilecolor, value: "##{@user.profilecolor}", class: 'color-field' %>
+        <%= f.color_field :profilecolor, value: "#{@user.profilecolor}", class: 'color-field' %>
       </div>
-
       <div class="question-box">
         <div class="margin-both">
           Если не хотите менять пароль — оставьте эти поля пустыми!
         </div>
-
         <div class="form-field">
           <%= f.label :password, class: 'form-label' %>
           <%= f.password_field :password, class: 'form-text-field' %>
         </div>
-
         <div class="form-field">
           <%= f.label :password_confirmation, class: 'form-label' %>
           <%= f.password_field :password_confirmation, class: 'form-text-field' %>
         </div>
-
         <div class="form-action margin-top text-center">
           <%= f.submit 'Сохранить', class: 'button' %>
         </div>
       </div>
     <% end %>
-
     <div class="margin-top-large question-box">
       <div class=" form-label">
         Чтобы удалить профиль введите пароль в поле ниже.

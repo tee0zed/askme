@@ -1,31 +1,40 @@
 require 'openssl'
 
 class User < ApplicationRecord
-
   ITERATIONS = 20000
   DIGEST = OpenSSL::Digest::SHA256.new
   USERNAME_REGEXP = /\A[a-z0-9_]+\z/i
-  PROFILECOLOR_REGEXP = /\A(?:[0-9a-fA-F]{3}){1,2}\z/
+  PROFILECOLOR_REGEXP = /\A#([0-9a-fA-F]{3}){1,2}\z/
 
   attr_accessor :password
   
   has_many :questions, dependent: :destroy
 
   before_validation :username_downcase, if: :username
-  before_validation :hex_format, if: :profilecolor
   before_save :encrypt_password, if: :password
 
-  validates :email, presence: true, uniqueness: true,  format: { with: URI::MailTo::EMAIL_REGEXP }
-  validates :username, uniqueness: true, length: { maximum: 40 }, format: { with: USERNAME_REGEXP }
-  validates :avatar_url, format: { with: URI::regexp(%w(http https)) }, allow_blank: true
-  validates :profilecolor, format: { with: PROFILECOLOR_REGEXP }
-  validates :password, presence: true, on: [:create, :destroy], confirmation: true
+  validates :email,
+            presence: true,
+            uniqueness: true,
+            format: { with: URI::MailTo::EMAIL_REGEXP }
+
+  validates :username,
+            uniqueness: true,
+            length: { maximum: 40 },
+            format: { with: USERNAME_REGEXP }
+
+  validates :avatar_url,
+            format: { with: URI::regexp(%w(http https)) },
+            allow_blank: true
+
+  validates :profilecolor,
+            format: { with: PROFILECOLOR_REGEXP }
+
+  validates :password, presence: true,
+            on: [:create, :destroy],
+            confirmation: true
 
   private
-
-  def hex_format
-    self.profilecolor = profilecolor.gsub('#', '')
-  end
 
   def username_downcase
     self.username = username.downcase 

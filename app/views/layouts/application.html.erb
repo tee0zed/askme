@@ -9,7 +9,6 @@
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 <body>
-
 <div class="header">
   <div class="header-logo">
     <h1 class="text-medium text-center"><%=link_to "Askify", root_path %></h1>
@@ -29,7 +28,6 @@
     </div>
   </div>
 </div>
-
 <div class="container">
   <% if flash.any? %>
     <div class="margin-both question-box">
@@ -40,6 +38,5 @@
   <% end %>
     <%= yield %>
 </div>
-
 </body>
 </html>

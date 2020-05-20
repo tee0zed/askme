@@ -1,4 +1,4 @@
-<div style="background-color: #<%= @user.profilecolor %>" class="flex-section">
+<div style="background-color: <%= @user.profilecolor %>" class="flex-section">
   <div class="margin-both-large text-center">
     <h2 class="text-medium"><%= @user.name %></h2>
     <div>
@@ -6,7 +6,6 @@
     </div>
     <h2 class="text-medium">@<%= @user.username %></h2>
   </div>
-
   <div class="flex-box">
     <div class="margin-both">
       <div class="question-box">
@@ -31,17 +30,14 @@
       <% end %>
       </div>
     </div>
-
     <div class="margin-both">
       <div class="question-box">
         <%= form_for(@new_question) do |f| %>
           <%= f.hidden_field :user_id %>
-
           <div class="form-field">
             <%= f.label "Ваш вопрос для @#{@user.username}", class: 'form-label' %>
             <%= f.text_area :text, class: 'form-textarea' %>
           </div>
-
           <div class="form-action">
             <%= submit_tag 'Задать вопрос', class: 'button small' %>
           </div>
