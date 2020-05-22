@@ -19,3 +19,5 @@ require("@rails/ujs").start()
 require("@rails/activestorage").start()
 require("channels")
 require("jquery")
+import '../alert'
+import 'popper.js'
