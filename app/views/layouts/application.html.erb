@@ -30,7 +30,7 @@
 </div>
 <div class="container">
   <% if flash.any? %>
-    <div class="margin-both question-box">
+    <div class="alert-box" id="alert-message">
       <% flash.each do |name, message| %>
         <%= content_tag :div, message, class: "flash-alert" %>
       <% end %>

@@ -4,12 +4,14 @@
   <div class="flex-box">
     <%= form_for @user do |f| %>
       <% if @user.errors.any? %>
-        <div class="form-errors">
-          <ul>
-            <% for message in @user.errors.full_messages %>
-              <li class="form-error-message text-center"><%= message %></li>
-            <% end %>
-          </ul>
+        <div class="alert-box" id="alert-message">
+          <div class="form-errors">
+            <ul>
+              <% for message in @user.errors.full_messages %>
+                <li class="form-error-message text-center"><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
         </div>
       <% end %>
     <div class="question-box">

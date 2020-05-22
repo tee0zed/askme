@@ -3,9 +3,8 @@
   width: 100%;
   background: #fff;
   top: 0;
-  opacity: 0.95;
   z-index: 10000;
-  box-shadow: 0 1px 10px #8080809e;
+  box-shadow: 0 2px 10px rgba(128, 128, 128, 0.84);
 }
 
 .logo {
