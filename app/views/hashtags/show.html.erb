@@ -1,0 +1,21 @@
+<div class="index-container purple">
+  <div class="text-center margin-both-large">
+    <div class="margin-both-large">
+      <h1 class="title-medium"><%= @hashtag.text %></h1>
+    </div>
+    <div class="flex-section-row">
+      <div class="question-box">
+        <% @questions.each do |question|%>
+          <div class="question-content">
+            <div class="question-text">
+              <%= question.text %>
+            </div>
+            <div class="question-text">
+              <%= link_to question.user.username, user_path(question.user), class: "author-link" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

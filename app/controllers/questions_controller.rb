@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :load_question, only: [:edit, :update, :destroy]
-  before_action :authorize_user, except: [:create]
+  before_action :authorize_user, except: :create
 
   def edit
   end
@@ -28,7 +28,6 @@ class QuestionsController < ApplicationController
   def destroy
     user = @question.user
     @question.destroy
-
     redirect_to user_path(user), notice: 'Вопрос удален'
   end
 
