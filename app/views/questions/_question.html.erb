@@ -2,7 +2,14 @@
 <% action_icon = question.answer.blank? ? 'reply' : 'pencil' %>
 <div class="question-content">
   <div class="question-text text-lead">
-    <%= text_with_hashtags(question.text) %>
+    <%= question.text %>
+    <div>
+      <% get_hashtags(question.text).each do |hashtag|%>
+        <div>
+          <%= hashtag.html_safe %>
+        </div>
+      <% end %>
+    </div>
   </div>
   <% if question.answer.present? %>
     <div class="question-answer text-lead">

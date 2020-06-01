@@ -4,10 +4,10 @@ module QuestionsHelper
     "Аноним"
   end
 
-  def text_with_hashtags(text)
-    text.gsub(Question::HASHTAG_REGEXP) do |hashtag_string|
+  def get_hashtags(text)
+    text.gsub(Question::HASHTAG_REGEXP).map do |hashtag_string|
       hashtag = Hashtag.find_by(text: hashtag_string.downcase)
-      link_to(hashtag_string, hashtag, class: "link-author")
+      link_to(hashtag_string, hashtag_path(hashtag), class: 'author-link')
     end
   end
 end
