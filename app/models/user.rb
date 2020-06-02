@@ -1,6 +1,9 @@
 require 'openssl'
 
 class User < ApplicationRecord
+  extend FriendlyId
+  friendly_id :username, use: :slugged
+
   ITERATIONS = 20000
   DIGEST = OpenSSL::Digest::SHA256.new
   USERNAME_REGEXP = /\A[a-z0-9_]+\z/i

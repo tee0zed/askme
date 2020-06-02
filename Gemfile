@@ -14,6 +14,7 @@ gem 'uglifier', '~> 2.7', '>= 2.7.2'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'simple_form'
 gem 'rinku'
+gem 'friendly_id', '~> 5.2.4'
 
 # gem 'redis', '~> 4.0'
 # gem 'bcrypt', '~> 3.1.7'

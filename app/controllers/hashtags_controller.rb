@@ -8,7 +8,7 @@ class HashtagsController < ApplicationController
   private
 
   def load_hashtag
-    @hashtag = Hashtag.find(params[:id])
+    @hashtag = Hashtag.friendly.find(params[:id])
   end
 
   def load_questions
