@@ -1,5 +1,6 @@
 class Hashtag < ApplicationRecord
-  has_and_belongs_to_many :questions
+  has_many :question_hashtags
+  has_many :questions, :through => :question_hashtags
 
   def self.create_hashtag(text, question)
     hashtag = Hashtag.find_by(text: text)
