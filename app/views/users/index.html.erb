@@ -17,8 +17,8 @@
     </div>
     <div class="flex-section-row">
       <div class="question-box">
-        <% hashtag_links(@hashtags).each do |hashtag_string| %>
-          <a class="author-link ml-3" href='/hashtags/<%= Translit.convert(hashtag_string[1..-1], :english) %>'><%= hashtag_string %></a>
+        <% @hashtags.each do |hashtag| %>
+          <span class="margin-both"><%= link_to '#'+hashtag.text, hashtag_path(hashtag), class: 'author-link' %></span>
         <% end %>
       </div>
     </div>
