@@ -5,10 +5,6 @@ class HashtagsController < ApplicationController
   def show
   end
 
-  def index
-    @hashtags = Hashtag.all
-  end
-
   private
 
   def load_hashtag
