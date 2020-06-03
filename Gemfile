@@ -15,7 +15,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'simple_form'
 gem 'rinku'
 gem 'friendly_id', '~> 5.2.4'
-gem 'babosa'
+gem 'translit'
 
 # gem 'redis', '~> 4.0'
 # gem 'bcrypt', '~> 3.1.7'
