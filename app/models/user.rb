@@ -13,6 +13,8 @@ class User < ApplicationRecord
   
   has_many :questions, dependent: :destroy
 
+  scope :sorted, -> { order(:created_at) }
+
   before_validation :username_downcase
   before_save :encrypt_password
 

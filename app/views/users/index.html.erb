@@ -18,7 +18,7 @@
     <div class="flex-section-row">
       <div class="question-box">
         <% @hashtags.each do |hashtag| %>
-          <span class="margin-both"><%= link_to '#'+hashtag.text, hashtag_path(hashtag), class: 'author-link' %></span>
+          <span class="margin-both"><%= link_to hashtag.text, hashtag_path(hashtag), class: 'author-link' %></span>
         <% end %>
       </div>
     </div>
