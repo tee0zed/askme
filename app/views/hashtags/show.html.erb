@@ -7,8 +7,11 @@
       <div class="question-box">
         <% @questions.each do |question|%>
           <div class="question-content">
-            <div class="question-text">
+            <div class="question-text text-lead">
               <%= question.text %>
+            </div>
+            <div class="question-answer text-lead">
+              <%= question.answer %>
             </div>
             <div class="question-text">
               <%= link_to question.user.username, user_path(question.user), class: "author-link" %>

@@ -14,6 +14,13 @@
   <% if question.answer.present? %>
     <div class="question-answer text-lead">
       <%= question.answer %>
+      <div>
+        <% get_hashtags(question.answer).each do |hashtag|%>
+          <div>
+            <%= hashtag.html_safe %>
+          </div>
+        <% end %>
+      </div>
     </div>
   <% end %>
   <div class="question-date">

@@ -4,27 +4,21 @@ class Question < ApplicationRecord
   belongs_to :user
   belongs_to :author, class_name: 'User', optional: true
 
-  has_many :question_hashtags
-  has_many :hashtags, :through => :question_hashtags
+  has_many :question_hashtags, dependent: :destroy
+  has_many :hashtags, through: :question_hashtags
 
   validates :text, :user, presence: true
   validates :text,  length: { maximum: 255 }
 
   before_destroy :destroy_empty_hashtags
 
-  after_save :find_hashtags
-
-  protected
-
-  def has_hashtag?
-    text.scan(/#[[:word:]-]+/).present?
-  end
+  after_commit :find_hashtags
 
   private
 
   def find_hashtags
-    if has_hashtag?
-      text.scan(/#[[:word:]-]+/).each do |hashtag|
+    [text, answer].reject(&:nil?).each do |string|
+      string.scan(HASHTAG_REGEXP).map do |hashtag|
         hashtag_text = hashtag.downcase
         question = self
 
