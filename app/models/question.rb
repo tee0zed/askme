@@ -4,7 +4,7 @@ class Question < ApplicationRecord
   belongs_to :user
   belongs_to :author, class_name: 'User', optional: true
 
-  has_many :question_hashtags, dependent: :destroy
+  has_many :question_hashtags
   has_many :hashtags, through: :question_hashtags
 
   validates :text, :user, presence: true
@@ -12,24 +12,24 @@ class Question < ApplicationRecord
 
   before_destroy :destroy_empty_hashtags
 
-  after_commit :find_hashtags
+  after_save_commit :find_hashtags
 
   private
 
   def find_hashtags
-    [text, answer].reject(&:nil?).each do |string|
-      string.scan(HASHTAG_REGEXP).map do |hashtag|
-        hashtag_text = hashtag.downcase
-        question = self
+    "#{text} #{answer}".scan(HASHTAG_REGEXP).uniq.map do |hashtag|
+      hashtag_text = hashtag.downcase
+      question = self
 
-        Hashtag.create_hashtag(hashtag_text, question)
-      end
+      Hashtag.create_hashtag(hashtag_text, question)
     end
   end
 
   def destroy_empty_hashtags
     self.hashtags.each do |hashtag|
-      hashtag.destroy if hashtag.questions.size == 1 && hashtag.questions.first == self
+      questions = hashtag.questions
+
+      hashtag.destroy if questions.size == 1 && questions.first == self
     end
   end
 end
