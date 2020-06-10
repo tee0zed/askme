@@ -2,18 +2,11 @@ class Hashtag < ApplicationRecord
   extend FriendlyId
   friendly_id :slug
 
-  has_many :question_hashtags, dependent: :destroy
+  has_many :question_hashtags
   has_many :questions, through: :question_hashtags
 
-  scope :sorted, -> { order(:created_at) }
-
-  def self.create_hashtag(text, question)
-    hashtag = Hashtag.find_or_create_by(text: text, slug: Hashtag.normalize_string(text))
-    questions = hashtag.questions
-
-    unless questions.include?(question)
-      questions << question
-    end
+  scope :with_questions, -> do
+    left_outer_joins(:question_hashtags).where.not(question_hashtags: { id: nil }).distinct.order(:created_at)
   end
 
   def self.normalize_string(text)

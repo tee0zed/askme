@@ -6,8 +6,7 @@ module QuestionsHelper
 
   def get_hashtags(text)
     text.gsub(Question::HASHTAG_REGEXP).map do |hashtag_string|
-      hashtag = Hashtag.find_by(slug: Hashtag.normalize_string(hashtag_string))
-      link_to(hashtag_string, hashtag_path(hashtag), class: 'author-link')
+      link_to(hashtag_string, hashtag_path(Hashtag.normalize_string(hashtag_string)), class: 'author-link')
     end
   end
 end
