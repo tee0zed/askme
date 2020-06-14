@@ -1,18 +1,8 @@
-<div class="flex-section purple">
+<div class="flex-section default-color">
   <div class="margin-both-large text-center">
     <h1 class="title-medium">Присоединяйся к нам!</h1>
     <%= form_for @user do |f| %>
-      <% if @user.errors.any? %>
-        <div class="alert-box" id="alert-message">
-          <div class="form-errors">
-            <ul>
-              <% for message in @user.errors.full_messages %>
-                <li class="form-error-message"><%= message %></li>
-              <% end %>
-            </ul>
-          </div>
-        </div>
-    <% end %>
+
   </div>
   <div class="flex-section-row">
     <div class="question-box">

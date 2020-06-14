@@ -27,6 +27,6 @@ module ApplicationHelper
 
   def container_color
     return current_user.profilecolor if current_user
-    3
+    '#4f8bc0'
   end
 end

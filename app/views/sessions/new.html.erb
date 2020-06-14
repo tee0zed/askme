@@ -1,11 +1,11 @@
-<div class="flex-section purple">
+<div class="flex-section default-color">
   <div class="margin-both-large text-center">
     <h1 class="title-medium">Вход</h1>
   </div>
   <div class="flex-section-row">
     <div class="question-box">
       <div class="form">
-        <%= form_tag sessions_path do %>
+        <%= form_tag session_path do %>
           <div class="form-field">
             <%= label_tag :email, 'Логин (email)', class: 'form-label' %>
             <%= text_field_tag :email, params[:email], class: 'form-text-field' %>

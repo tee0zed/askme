@@ -23,6 +23,7 @@ class UsersController < ApplicationController
 
       redirect_to root_path, notice: "Пользователь создан!"
     else
+      flash.now[:alerts] = @user.errors.full_messages[0]
       render "new"
     end
   end
@@ -34,6 +35,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to user_path(@user), notice: "Данные обновлены"
     else
+      flash.now[:alerts] = @user.errors.full_messages[0]
       render 'edit'
     end
   end
